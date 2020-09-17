@@ -30,7 +30,7 @@ It have to install in ABV.Pages and ABV.Tests the following NuGet packages:
 9.Selenium.WebDriver.ChromeD
 10.Selenium.WebDriver.GeckoDriver
 
-Also have to checked project references:
+Also you need to check the project references as follow
 
 1.ABV.Factory with ABV.Models
 2.ABV.Pages with  ABV.Factory  ABV.Models  Utilities
