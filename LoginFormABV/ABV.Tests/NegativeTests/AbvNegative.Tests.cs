@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Utilities;
 
 namespace ABV.Tests.NegativeTests
 {
@@ -12,7 +13,7 @@ namespace ABV.Tests.NegativeTests
         {
             loginCondition.UsernameField = username;
             loginPage.LoginForm(loginCondition);
-            Assert.AreEqual("Грешен потребител / парола.", loginPage.ErrorMessage.Text);
+            Assert.AreEqual(ValidationMessages.ErrorMessage, loginPage.ErrorMessage.Text);
         }
         [Test]
         public void CheckUsernameFieldWithMoreThenLimitedLengthOfChars()
@@ -28,7 +29,7 @@ namespace ABV.Tests.NegativeTests
         {
             loginCondition.PasswordField = passsword;
             loginPage.LoginForm(loginCondition);
-            Assert.AreEqual("Грешен потребител / парола.", loginPage.ErrorMessage.Text);
+            Assert.AreEqual(ValidationMessages.ErrorMessage, loginPage.ErrorMessage.Text);
         }
         [Test]
         public void CheckPasswordFieldWithMoreThenLimitedLengthOfChars()

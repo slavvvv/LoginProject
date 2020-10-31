@@ -59,12 +59,12 @@ namespace ABV.Pages.BasePage
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
         }
-        public static IWebDriver StartBrowser()
+        public static IWebDriver StartBrowser(BrowserType browserType, BrowserMode browserMode)
         {
-            switch (GlobalVariables.BrowserType)
+            switch (browserType)
             {
-                case "Chrome":
-                    if (GlobalVariables.IsBrowserHeadless)
+                case BrowserType.Chrome:
+                    if (browserMode == BrowserMode.Headless)
                     {
                         var options = new ChromeOptions();
 
@@ -90,8 +90,8 @@ namespace ABV.Pages.BasePage
                     }
 
                 //TODO: Firefox do not close properly the browser after the completion of the tests.
-                case "Firefox":
-                    if (GlobalVariables.IsBrowserHeadless)
+                case BrowserType.FireFox:
+                    if (browserMode == BrowserMode.Headless)
                     {
                         var options = new FirefoxOptions();
 
@@ -110,7 +110,7 @@ namespace ABV.Pages.BasePage
                     }
 
                 //TODO: IE opens tabs in a new window, not in the same.
-                case "IE":
+                case BrowserType.InternetExplorer:
                     {
                         var options = new InternetExplorerOptions();
 
@@ -120,7 +120,7 @@ namespace ABV.Pages.BasePage
                     }
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(GlobalVariables.BrowserType), GlobalVariables.BrowserType, null);
+                    throw new ArgumentOutOfRangeException(nameof(browserType), browserType, null);
             }
         }
     }
