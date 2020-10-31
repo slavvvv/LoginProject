@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-
+using Utilities;
 
 namespace ABV.Tests.CrashTests
 {
@@ -13,7 +13,7 @@ namespace ABV.Tests.CrashTests
         {
             loginCondition.UsernameField = username;
             loginPage.LoginForm(loginCondition);
-            Assert.AreEqual("Грешен потребител / парола.", loginPage.ErrorMessage.Text);
+            Assert.AreEqual(ValidationMessages.ErrorMessage, loginPage.ErrorMessage.Text);
         }
         [Test]
         [TestCase("Robert'); DROP TABLE Students;--", Description = "SQLInjection")]
@@ -23,7 +23,7 @@ namespace ABV.Tests.CrashTests
         {
             loginCondition.PasswordField = password;
             loginPage.LoginForm(loginCondition);
-            Assert.AreEqual("Грешен потребител / парола.", loginPage.ErrorMessage.Text);
+            Assert.AreEqual(ValidationMessages.ErrorMessage, loginPage.ErrorMessage.Text);
         }
     }
 }
