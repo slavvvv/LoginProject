@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Utilities;
 
 namespace ABV.Tests.PositiveTests
 {
@@ -28,8 +29,8 @@ namespace ABV.Tests.PositiveTests
         [Test]
         public void SuccessfulUserLogin()
         {
-            loginPage.Login(Utilities.GlobalConstants.Username, Utilities.GlobalConstants.Password);
-            Assert.AreEqual("Здравейте, Слав Слав (slavtest@abv.bg)", homePage.UserGreetings.Text);
+            loginPage.Login(GlobalConstants.Username, GlobalConstants.Password);
+            Assert.AreEqual(ValidationMessages.WelcomeMessage, homePage.UserGreetings.Text);
         }
         [Test]
         public void CheckErrorMessageText()
@@ -37,7 +38,7 @@ namespace ABV.Tests.PositiveTests
             loginCondition.UsernameField = "потребител";
             loginCondition.PasswordField = "парола";
             loginPage.LoginForm(loginCondition);
-            Assert.AreEqual("Грешен потребител / парола.", loginPage.ErrorMessage.Text);
+            Assert.AreEqual(ValidationMessages.ErrorMessage, loginPage.ErrorMessage.Text);
         }
     }
 }
