@@ -11,6 +11,8 @@ This is an automation framework for web application testing.
    simple login form.
  2. It conains 19 tests. They are running on cross browser Chrome, Firefox
    and IE.
+   
+https://github.com/slavvvv/LoginProject.git
 
 **LoginFormABV solution contains five projects:**
 
